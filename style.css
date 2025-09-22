@@ -9,7 +9,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #0d1b2a, #1b263b); /* dark navy */
+  background: linear-gradient(135deg, #234264, #3a5484); /* dark navy */
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -22,7 +22,7 @@ body {
 .container {
   width: 100%;
   max-width: 700px;
-  background: rgba(20, 30, 50, 0.8); /* dark glass */
+  background: rgba(27, 50, 97, 0.8); /* dark glass */
   backdrop-filter: blur(15px);
   border-radius: 25px;
   padding: 30px;
@@ -78,7 +78,7 @@ select::placeholder {
 textarea:focus,
 select:focus,
 input[type="datetime-local"]:focus {
-  outline: 2px solid #1f7fff; /* biru terang */
+  outline: 2px solid #2972d1;
   background: rgba(40, 50, 70, 0.8);
 }
 
@@ -94,13 +94,13 @@ button {
 }
 
 #addTaskBtn {
-  background: linear-gradient(135deg, #1f7fff, #0a3d91); /* biru bold */
+  background: linear-gradient(135deg, #1f7fff, #1650ac); /* biru bold */
   color: #fff;
 }
 
 #addTaskBtn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(31, 127, 255, 0.5);
+  box-shadow: 0 5px 10px rgba(31, 127, 255, 0.5);
 }
 
 #clearAllBtn {
