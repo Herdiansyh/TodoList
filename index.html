@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List App</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>To Do List</h1>
+        <p>Nama: Mohamad Herdiansyah | Jabatan: Frontend Dev</p>
+        <p>Hari/Tanggal: <span id="currentDate"></span></p>
+      </header>
+
+      <section class="form-section">
+        <textarea
+          id="taskInput"
+          placeholder="Tulis tugas di sini..."
+        ></textarea>
+        <select id="priority">
+          <option value="" disabled selected hidden>Pilih prioritas...</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+        <!-- Deadline input -->
+        <input type="datetime-local" id="dueDate" />
+        <button id="addTaskBtn">Tambah Tugas</button>
+      </section>
+
+      <section class="task-list">
+        <h2>To Do</h2>
+        <ul id="todoList">
+          <!-- Contoh item manual -->
+          <li class="overdue">
+            <div>
+              <input type="checkbox" />
+              <span
+                >Kerjakan laporan KP (Priority: High) - Deadline:
+                2025-09-19</span
+              >
+            </div>
+            <button class="delete-btn">Hapus</button>
+          </li>
+        </ul>
+      </section>
+      <!-- Modal -->
+      <div id="confirmModal" class="modal">
+        <div class="modal-content">
+          <h2>⚠️Yakin nih?</h2>
+          <p>Semua item bakal dihapus permanen.</p>
+          <div class="modal-actions">
+            <button id="cancelBtn">Batal</button>
+            <button id="confirmBtn">Hapus 🚮</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="task-list">
+        <h2>Done</h2>
+        <ul id="doneList"></ul>
+      </section>
+
+      <button id="clearAllBtn">Hapus Semua</button>
+
+      <script src="app.js"></script>
+    </div>
+  </body>
+</html>
