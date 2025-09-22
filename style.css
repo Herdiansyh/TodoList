@@ -9,7 +9,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #234264, #3a5484); /* dark navy */
+  background: linear-gradient(135deg, #4d77a3, #46587a);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -22,7 +22,7 @@ body {
 .container {
   width: 100%;
   max-width: 700px;
-  background: rgba(27, 50, 97, 0.8); /* dark glass */
+  background: rgba(27, 50, 97, 0.8);
   backdrop-filter: blur(15px);
   border-radius: 25px;
   padding: 30px;
@@ -94,7 +94,7 @@ button {
 }
 
 #addTaskBtn {
-  background: linear-gradient(135deg, #1f7fff, #1650ac); /* biru bold */
+  background: linear-gradient(135deg, #1f7fff, #1650ac);
   color: #fff;
 }
 
@@ -104,7 +104,7 @@ button {
 }
 
 #clearAllBtn {
-  background: linear-gradient(135deg, #d90429, #8b0000); /* merah marun */
+  background: linear-gradient(135deg, #d90429, #8b0000);
   color: #fff;
   font-weight: 700;
 }
