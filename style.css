@@ -33,8 +33,45 @@ body {
   color: #fff;
 }
 
-header {
-  text-align: center;
+.profile-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+}
+
+.profile-dropdown {
+  display: none; /* tersembunyi default */
+  position: absolute;
+
+  right: 50px;
+  top: -10px;
+  margin-left: auto;
+  background: rgba(30, 40, 60, 0.95);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  min-width: 100px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.profile-dropdown p {
+  margin: 2px 0;
+  font-size: 10px;
 }
 
 h1 {
@@ -219,6 +256,40 @@ li.overdue {
 
 #confirmBtn:hover {
   background: #8b0000;
+}
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-section label {
+  font-size: 14px;
+  color: #fff;
+}
+
+.filter-section input[type="date"] {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  background: rgba(30, 40, 60, 0.7);
+  color: #fff;
+}
+
+.filter-section button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #1f7fff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-section button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(31, 127, 255, 0.5);
 }
 
 @keyframes pop {

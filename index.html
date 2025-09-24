@@ -9,13 +9,32 @@
   </head>
   <body>
     <div class="container">
-      <header>
-        <h1>To Do List</h1>
-        <p>Nama: Mohamad Herdiansyah | Jabatan: Frontend Dev</p>
+      <div class="profile-wrapper">
         <p>Hari/Tanggal: <span id="currentDate"></span></p>
-      </header>
 
+        <img
+          src="img/profile.png"
+          alt="Profile"
+          class="profile-icon"
+          id="profileIcon"
+        />
+
+        <div class="profile-dropdown" id="profileDropdown">
+          <p><strong>Nama:</strong> Mohamad Herdiansyah</p>
+          <p><strong>Jabatan:</strong> Frontend Developer</p>
+        </div>
+      </div>
       <section class="form-section">
+        <!--  filter tanggal -->
+        <label for="filterDate" style="margin-top: 10px; color: #fff"
+          >Filter Tanggal:</label
+        >
+        <!-- Filter Section -->
+        <section class="filter-section">
+          <label for="filterDate">Lihat To Do di tanggal:</label>
+          <input type="date" id="filterDate" />
+          <button id="resetFilter">Reset</button>
+        </section>
         <textarea
           id="taskInput"
           placeholder="Tulis tugas di sini..."
@@ -27,6 +46,9 @@
           <option value="High">High</option>
         </select>
         <!-- Deadline input -->
+        <label for="filterDate" style="margin-top: 10px; color: #fff"
+          >Deadline:</label
+        >
         <input type="datetime-local" id="dueDate" />
         <button id="addTaskBtn">Tambah Tugas</button>
       </section>

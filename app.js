@@ -45,12 +45,11 @@ addTaskBtn.addEventListener("click", function () {
 
   const id = Date.now().toString(); // id unik
 
-  // Cek apakah user isi deadline
+  // Set deadline ke hari ini jika kosong
   let deadlineValue = datetimeLocal.value;
   if (!deadlineValue) {
     const now = new Date();
-    // format biar sesuai input datetime-local (yyyy-MM-ddTHH:mm)
-    deadlineValue = now.toISOString().slice(0, 16);
+    deadlineValue = now.toISOString().slice(0, 16); // yyyy-MM-ddTHH:mm
   }
 
   const taskObj = {
@@ -59,6 +58,7 @@ addTaskBtn.addEventListener("click", function () {
     priority: priority.value,
     deadline: deadlineValue,
     status: "todo",
+    createdAt: new Date().toISOString().slice(0, 10), // simpan tanggal pembuatan
   };
 
   tasks.push(taskObj);
@@ -72,11 +72,17 @@ addTaskBtn.addEventListener("click", function () {
 });
 
 // Render task
-function renderTasks() {
+function renderTasks(filter = null) {
   todolist.innerHTML = "";
   doneList.innerHTML = "";
 
-  tasks.forEach((task) => {
+  let filteredTasks = tasks;
+
+  if (filter) {
+    filteredTasks = tasks.filter((t) => t.createdAt === filter);
+  }
+
+  filteredTasks.forEach((task) => {
     const li = document.createElement("li");
     const deadlineText = task.deadline
       ? new Date(task.deadline).toLocaleString()
@@ -92,10 +98,7 @@ function renderTasks() {
       }
     }
 
-    // Tambahkan class overdue ke <li> jika overdue
-    if (isOverdue) {
-      li.classList.add("overdue");
-    }
+    if (isOverdue) li.classList.add("overdue");
 
     li.innerHTML = `
       <div>
@@ -108,26 +111,45 @@ function renderTasks() {
       <button class="delete-btn">Hapus</button>
     `;
 
-    // Checkbox handler
     const checkbox = li.querySelector("input[type='checkbox']");
     const span = li.querySelector("span");
     checkbox.addEventListener("change", function () {
       task.status = this.checked ? "done" : "todo";
       span.classList.toggle("done", this.checked);
       saveTasks();
-      renderTasks();
+      renderTasks(filterDate.value);
     });
 
-    // Simpan id ke element untuk memudahkan hapus
     li.dataset.id = task.id;
 
-    if (task.status === "done") {
-      doneList.appendChild(li);
-    } else {
-      todolist.appendChild(li);
-    }
+    if (task.status === "done") doneList.appendChild(li);
+    else todolist.appendChild(li);
   });
 }
+
+const filterDate = document.getElementById("filterDate");
+
+filterDate.addEventListener("change", () => {
+  renderTasks(filterDate.value);
+});
+const resetFilter = document.getElementById("resetFilter");
+
+// Set default ke hari ini
+const today = new Date().toISOString().slice(0, 10);
+filterDate.value = today;
+
+// Render tasks hanya hari ini saat load
+renderTasks(today);
+
+filterDate.addEventListener("change", () => {
+  const selected = filterDate.value;
+  renderTasks(selected ? selected : null);
+});
+
+resetFilter.addEventListener("click", () => {
+  filterDate.value = "";
+  renderTasks(null);
+});
 
 // Hapus item di todoList
 todolist.addEventListener("click", function (e) {
@@ -170,9 +192,21 @@ confirmBtn.addEventListener("click", () => {
   renderTasks();
   confirmModal.style.display = "none";
 });
+const profileIcon = document.getElementById("profileIcon");
+const profileDropdown = document.getElementById("profileDropdown");
+
+profileIcon.addEventListener("click", () => {
+  // Toggle tampilan dropdown
+  profileDropdown.style.display =
+    profileDropdown.style.display === "block" ? "none" : "block";
+});
 
 // Klik luar modal -> tutup
 window.addEventListener("click", (e) => {
+  // tutup profile dropdown
+  if (!profileIcon.contains(e.target) && !profileDropdown.contains(e.target)) {
+    profileDropdown.style.display = "none";
+  }
   if (e.target === confirmModal) {
     confirmModal.style.display = "none";
   }
